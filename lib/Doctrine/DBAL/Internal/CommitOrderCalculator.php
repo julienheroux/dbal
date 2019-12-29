@@ -11,7 +11,7 @@ use function array_reverse;
  * This algorithm have a linear running time based on nodes (V) and dependency
  * between the nodes (E), resulting in a computational complexity of O(V + E).
  */
-class CommitOrderCalculator
+final class CommitOrderCalculator
 {
     public const NOT_VISITED = 0;
     public const IN_PROGRESS = 1;
@@ -47,12 +47,11 @@ class CommitOrderCalculator
     /**
      * Adds a new node (vertex) to the graph, assigning its hash and value.
      *
-     * @param string $hash
      * @param object $node
      *
      * @return void
      */
-    public function addNode($hash, $node)
+    public function addNode(string $hash, $node) : void
     {
         $vertex = new CommitOrderNode();
 
@@ -65,14 +64,8 @@ class CommitOrderCalculator
 
     /**
      * Adds a new dependency (edge) to the graph using their hashes.
-     *
-     * @param string $fromHash
-     * @param string $toHash
-     * @param int    $weight
-     *
-     * @return void
      */
-    public function addDependency($fromHash, $toHash, $weight)
+    public function addDependency(string $fromHash, string $toHash, int $weight) : void
     {
         $vertex = $this->nodeList[$fromHash];
         $edge   = new CommitOrderEdge();
@@ -92,7 +85,7 @@ class CommitOrderCalculator
      *
      * @return array<object>
      */
-    public function sort()
+    public function sort() : array
     {
         foreach ($this->nodeList as $vertex) {
             if ($vertex->state !== self::NOT_VISITED) {

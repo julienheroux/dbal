@@ -3187,7 +3187,7 @@ abstract class AbstractPlatform
      *
      * @return bool
      */
-    public function supportsCreateDropForeignKeyConstraints()
+    public function supportsCreateDropForeignKeyConstraints() : bool
     {
         return true;
     }

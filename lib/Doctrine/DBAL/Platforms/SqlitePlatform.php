@@ -770,7 +770,7 @@ class SqlitePlatform extends AbstractPlatform
     /**
      * {@inheritDoc}
      */
-    public function supportsCreateDropForeignKeyConstraints()
+    public function supportsCreateDropForeignKeyConstraints() : bool
     {
         return false;
     }

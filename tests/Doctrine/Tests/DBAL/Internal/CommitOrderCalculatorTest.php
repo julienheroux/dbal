@@ -31,11 +31,15 @@ class CommitOrderCalculatorTest extends DbalTestCase
         $table4 = new Table('table4');
         $table5 = new Table('table5');
 
+        $this->assertFalse($this->calculator->hasNode($table1->getName()));
+
         $this->calculator->addNode($table1->getName(), $table1);
         $this->calculator->addNode($table2->getName(), $table2);
         $this->calculator->addNode($table3->getName(), $table3);
         $this->calculator->addNode($table4->getName(), $table4);
         $this->calculator->addNode($table5->getName(), $table5);
+
+        $this->assertTrue($this->calculator->hasNode($table1->getName()));
 
         $this->calculator->addDependency($table1->getName(), $table2->getName(), 1);
         $this->calculator->addDependency($table2->getName(), $table3->getName(), 1);

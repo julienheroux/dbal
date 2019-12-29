@@ -49,8 +49,7 @@ class SchemaDiffTest extends TestCase
             ->with('foo_ns')
             ->will($this->returnValue('create_schema'));
 
-        $platform->expects($this->any())
-            ->method('supportsCreateDropForeignKeyConstraints')
+        $platform->method('supportsCreateDropForeignKeyConstraints')
             ->will($this->returnValue(true));
 
         if ($unsafe) {
