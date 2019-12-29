@@ -23,7 +23,7 @@ class CommitOrderCalculatorTest extends DbalTestCase
         $this->calculator = new CommitOrderCalculator();
     }
 
-    public function testCommitOrdering1()
+    public function testCommitOrdering1() : void
     {
         $table1 = new Table('table1');
         $table2 = new Table('table2');
@@ -54,7 +54,7 @@ class CommitOrderCalculatorTest extends DbalTestCase
         $this->assertSame($correctOrder, $sorted);
     }
 
-    public function testCommitOrdering2()
+    public function testCommitOrdering2() : void
     {
         $table1 = new Table('table1');
         $table2 = new Table('table2');
@@ -73,7 +73,7 @@ class CommitOrderCalculatorTest extends DbalTestCase
         $this->assertSame($correctOrder, $sorted);
     }
 
-    public function testCommitOrdering3()
+    public function testCommitOrdering3() : void
     {
         // this test corresponds to the GH7259Test::testPersistFileBeforeVersion functional test
         $table1 = new Table('table1');

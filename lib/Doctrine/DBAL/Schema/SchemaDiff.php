@@ -176,7 +176,7 @@ class SchemaDiff
      * This is ncessary when one table depends on another while creating foreign key
      * constraints directly during CREATE TABLE.
      *
-     * @return array<\Doctrine\DBAL\Schema\Table>
+     * @return array<Table>
      */
     private function getNewTablesSortedByDependencies()
     {

@@ -14,8 +14,8 @@ use Doctrine\DBAL\Schema\ColumnDiff;
 use Doctrine\DBAL\Schema\Comparator;
 use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Doctrine\DBAL\Schema\Index;
-use Doctrine\DBAL\Schema\SchemaDiff;
 use Doctrine\DBAL\Schema\Schema;
+use Doctrine\DBAL\Schema\SchemaDiff;
 use Doctrine\DBAL\Schema\Sequence;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Schema\TableDiff;
@@ -1606,7 +1606,7 @@ abstract class SchemaManagerFunctionalTestCase extends DbalFunctionalTestCase
         self::assertSame('Foo with control characters \'\\', $table->getComment());
     }
 
-    public function testSchemaDiffForeignKeys()
+    public function testSchemaDiffForeignKeys() : void
     {
         $schemaManager = $this->connection->getSchemaManager();
 

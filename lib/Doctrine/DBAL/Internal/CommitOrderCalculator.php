@@ -28,18 +28,14 @@ final class CommitOrderCalculator
     /**
      * Volatile variable holding calculated nodes during sorting process.
      *
-     * @var array<CommitOrderNode>
+     * @var array<object>
      */
     private $sortedNodeList = [];
 
     /**
      * Checks for node (vertex) existence in graph.
-     *
-     * @param string $hash
-     *
-     * @return bool
      */
-    public function hasNode($hash)
+    public function hasNode(string $hash) : bool
     {
         return isset($this->nodeList[$hash]);
     }
@@ -48,8 +44,6 @@ final class CommitOrderCalculator
      * Adds a new node (vertex) to the graph, assigning its hash and value.
      *
      * @param object $node
-     *
-     * @return void
      */
     public function addNode(string $hash, $node) : void
     {
