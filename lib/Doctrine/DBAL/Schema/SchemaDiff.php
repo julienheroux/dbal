@@ -173,7 +173,7 @@ class SchemaDiff
     /**
      * Sorts tables by dependencies so that they are created in the right order.
      *
-     * This is ncessary when one table depends on another while creating foreign key
+     * This is necessary when one table depends on another while creating foreign key
      * constraints directly during CREATE TABLE.
      *
      * @return array<Table>
