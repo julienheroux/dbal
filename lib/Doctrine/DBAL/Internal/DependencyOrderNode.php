@@ -2,7 +2,7 @@
 
 namespace Doctrine\DBAL\Internal;
 
-class CommitOrderNode
+class DependencyOrderNode
 {
     /** @var string */
     public $hash;
@@ -13,6 +13,6 @@ class CommitOrderNode
     /** @var object */
     public $value;
 
-    /** @var CommitOrderEdge[] */
+    /** @var DependencyOrderEdge[] */
     public $dependencyList = [];
 }

@@ -2,7 +2,7 @@
 
 namespace Doctrine\DBAL\Internal;
 
-class CommitOrderEdge
+class DependencyOrderEdge
 {
     /** @var string */
     public $from;

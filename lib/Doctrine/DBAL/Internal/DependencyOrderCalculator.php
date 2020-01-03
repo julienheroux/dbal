@@ -5,13 +5,13 @@ namespace Doctrine\DBAL\Internal;
 use function array_reverse;
 
 /**
- * CommitOrderCalculator implements topological sorting, which is an ordering
+ * DependencyOrderCalculator implements topological sorting, which is an ordering
  * algorithm for directed graphs (DG) and/or directed acyclic graphs (DAG) by
  * using a depth-first searching (DFS) to traverse the graph built in memory.
  * This algorithm have a linear running time based on nodes (V) and dependency
  * between the nodes (E), resulting in a computational complexity of O(V + E).
  */
-final class CommitOrderCalculator
+final class DependencyOrderCalculator
 {
     public const NOT_VISITED = 0;
     public const IN_PROGRESS = 1;
@@ -21,7 +21,7 @@ final class CommitOrderCalculator
      * Matrix of nodes (aka. vertex).
      * Keys are provided hashes and values are the node definition objects.
      *
-     * @var array<string,CommitOrderNode>
+     * @var array<string,DependencyOrderNode>
      */
     private $nodeList = [];
 
@@ -47,7 +47,7 @@ final class CommitOrderCalculator
      */
     public function addNode(string $hash, $node) : void
     {
-        $vertex = new CommitOrderNode();
+        $vertex = new DependencyOrderNode();
 
         $vertex->hash  = $hash;
         $vertex->state = self::NOT_VISITED;
@@ -62,7 +62,7 @@ final class CommitOrderCalculator
     public function addDependency(string $fromHash, string $toHash, int $weight) : void
     {
         $vertex = $this->nodeList[$fromHash];
-        $edge   = new CommitOrderEdge();
+        $edge   = new DependencyOrderEdge();
 
         $edge->from   = $fromHash;
         $edge->to     = $toHash;
@@ -102,7 +102,7 @@ final class CommitOrderCalculator
      *
      * {@internal Highly performance-sensitive method.}
      */
-    private function visit(CommitOrderNode $vertex)
+    private function visit(DependencyOrderNode $vertex)
     {
         $vertex->state = self::IN_PROGRESS;
 

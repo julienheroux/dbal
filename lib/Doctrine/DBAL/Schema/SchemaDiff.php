@@ -2,7 +2,7 @@
 
 namespace Doctrine\DBAL\Schema;
 
-use Doctrine\DBAL\Internal\CommitOrderCalculator;
+use Doctrine\DBAL\Internal\DependencyOrderCalculator;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use function array_merge;
 
@@ -180,12 +180,12 @@ class SchemaDiff
      */
     private function getNewTablesSortedByDependencies()
     {
-        $commitOrderCalculator = new CommitOrderCalculator();
-        $newTables             = [];
+        $calculator = new DependencyOrderCalculator();
+        $newTables  = [];
 
         foreach ($this->newTables as $table) {
             $newTables[$table->getName()] = true;
-            $commitOrderCalculator->addNode($table->getName(), $table);
+            $calculator->addNode($table->getName(), $table);
         }
 
         foreach ($this->newTables as $table) {
@@ -196,10 +196,10 @@ class SchemaDiff
                     continue;
                 }
 
-                $commitOrderCalculator->addDependency($foreignTableName, $table->getName(), 1);
+                $calculator->addDependency($foreignTableName, $table->getName(), 1);
             }
         }
 
-        return $commitOrderCalculator->sort();
+        return $calculator->sort();
     }
 }

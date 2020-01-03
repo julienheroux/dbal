@@ -2,7 +2,7 @@
 
 namespace Doctrine\Tests\DBAL\Internal;
 
-use Doctrine\DBAL\Internal\CommitOrderCalculator;
+use Doctrine\DBAL\Internal\DependencyOrderCalculator;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\Tests\DbalTestCase;
 
@@ -13,14 +13,14 @@ use Doctrine\Tests\DbalTestCase;
  * can have many valid orderings, so you may want to build a graph that has only
  * 1 valid order to simplify your tests.
  */
-class CommitOrderCalculatorTest extends DbalTestCase
+class DependencyOrderCalculatorTest extends DbalTestCase
 {
-    /** @var CommitOrderCalculator */
+    /** @var DependencyOrderCalculator */
     private $calculator;
 
     protected function setUp() : void
     {
-        $this->calculator = new CommitOrderCalculator();
+        $this->calculator = new DependencyOrderCalculator();
     }
 
     public function testCommitOrdering1() : void
