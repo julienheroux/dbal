@@ -56,3 +56,9 @@ parameters:
 
         # weird class name, represented in stubs as OCI_(Lob|Collection)
         - '~unknown class OCI-(Lob|Collection)~'
+
+        # False Positive
+        - '~Strict comparison using === between 1 and 2 will always evaluate to false~'
+
+        # Needs Generics
+        - '~Method Doctrine\\DBAL\\Schema\\SchemaDiff::getNewTablesSortedByDependencies\(\) should return array<Doctrine\\DBAL\\Schema\\Table> but returns array<object>.~'
