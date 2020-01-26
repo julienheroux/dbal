@@ -1,5 +1,5 @@
 {
-    "name": "doctrine/dbal",
+    "name": "julienheroux/dbal",
     "type": "library",
     "description": "Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection and management.",
     "keywords": [
@@ -59,8 +59,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.10.x-dev",
-            "dev-develop": "2.10.x-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }
